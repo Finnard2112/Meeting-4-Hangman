@@ -20,7 +20,7 @@ while completion == False:
         print ("Your guess is correct, there was/were {} matches in the word".format(count))
         print(presentation)
     
-    if any(answer_list) == False: #since all 0 have a negative truthy value, we can use all() to check if any element has a truthy value 
+    if any(answer_list) == False: #since all 0 have a negative truthy value, we can use any() to check if any element has a truthy value 
         completion = True
 
 print("Congrats, you got everything correct")
