@@ -1,9 +1,11 @@
+
 answer = input("what's the word")
 answer_list = list(answer) #list version of the original word
 presentation = []
 for i in range(len(answer_list)):
     presentation.append("_") #makes a list that shows the progress of the player during the game
 
+incorrect = 0 #number of allowed guesses
 completion = False # condition for end game
 while completion == False:
     attempt = input('guess')
@@ -15,12 +17,18 @@ while completion == False:
             presentation[num] = attempt
             answer_list[num] = 0 #if there is an occurence, replace that occurence with 0 in answer_list
             count += 1
-    
     if count>0:
         print ("Your guess is correct, there was/were {} matches in the word".format(count))
         print(presentation)
+    elif count == 0:
+        incorrect += 1
+
+    if incorrect == 5:
+        print("You lost")
+        break
     
     if any(answer_list) == False: #since all 0 have a negative truthy value, we can use any() to check if any element has a truthy value 
+        print("Congrats, you got everything correct")
         completion = True
+        break
 
-print("Congrats, you got everything correct")
